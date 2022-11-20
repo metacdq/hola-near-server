@@ -27,11 +27,11 @@ export default class XMPPLogin{
     }
     async check(accountId: string){
         try{
-            await axios.post(`${this.baseUrl}check_account`, {
+            const response=await axios.post(`${this.baseUrl}check_account`, {
                 user: accountId,
                 host: "chat.cindaku.com",
             }, this.options)
-            return true
+            return response.data == 0
         }catch(e){
             return false
         }

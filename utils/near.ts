@@ -19,8 +19,9 @@ export default class Near{
                     finality: 'final',
                     account_id: accountId
                 }
-            }) as RPCResponce
-            if(response.result.permission){
+            })
+            const parsedResponse = response.data as RPCResponce
+            if(parsedResponse.result.permission){
                 return true
             }
             return false

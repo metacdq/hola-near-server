@@ -9,7 +9,7 @@ export default class Near{
 
     async check(accountId: string, token: string){
         try{
-            const response = await axios.post('',{
+            const response = await axios.post('https://rpc.testnet.near.org/',{
                 jsonrpc: '2.0',
                 id: 'dontcare',
                 method: 'query',
@@ -25,6 +25,7 @@ export default class Near{
             }
             return false
         }catch(e){
+            console.log(e)
             return false
         }
     }

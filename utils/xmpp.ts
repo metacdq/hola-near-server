@@ -8,7 +8,7 @@ export default class XMPPLogin{
         headers: {'Authorization': 'Basic YWxhbkBjaGF0LmNpbmRha3UuY29tOmFsYW5tcjMz'}
     }
     xNear= "HOLA-NEAR"
-    baseUrl = 'https://chat.cindaku.com/api/'
+    baseUrl = 'http://chat.cindaku.com:5280/api/'
     constructor(){
         this.near = new Near()
 
@@ -67,6 +67,7 @@ export default class XMPPLogin{
                 message: 'unauthorized'
             }
         }catch(e){
+            console.log(e)
             return {
                 status: false,
                 message: "an error occured"

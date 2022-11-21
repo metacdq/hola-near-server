@@ -15,11 +15,13 @@ export default class XMPPLogin{
     }
     async register(accountId: string, password: string){
         try{
-            await axios.post(`${this.baseUrl}register`, {
+            const regsiter=await axios.post(`${this.baseUrl}register`, {
                 user: accountId,
                 host: "chat.cindaku.com",
                 password: password
             }, this.options)
+            const result = regsiter.data as string
+            return result
         }catch(e){
             throw e
         }
@@ -45,7 +47,13 @@ export default class XMPPLogin{
                 const isRegistered = await this.check(data[0])
                 const accessToken = Base64.encode(`${this.xNear}-${data[0]}`)
                 if(!isRegistered){
-                    this.register(data[0], accessToken)
+                    const register = await this.register(data[0], accessToken)
+                    if(register!="Success"){
+                        return {
+                            status: false,
+                            message: register
+                        }
+                    }
                 }
                 return {
                     status: true,
@@ -61,7 +69,7 @@ export default class XMPPLogin{
         }catch(e){
             return {
                 status: false,
-                message: 'an error occured'
+                message: e.message
             }
         }
     }

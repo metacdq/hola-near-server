@@ -8,7 +8,7 @@ export default class XMPPLogin{
         headers: {'Authorization': 'Basic YWxhbkBjaGF0LmNpbmRha3UuY29tOmFsYW5tcjMz'}
     }
     xNear= "HOLA-NEAR"
-    baseUrl = 'http://chat.cindaku.com/api/'
+    baseUrl = 'https://chat.cindaku.com/api/'
     constructor(){
         this.near = new Near()
 

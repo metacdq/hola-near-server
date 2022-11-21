@@ -69,7 +69,7 @@ export default class XMPPLogin{
         }catch(e){
             return {
                 status: false,
-                message: e.message
+                message: "an error occured"
             }
         }
     }
